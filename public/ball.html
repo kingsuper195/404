@@ -3,53 +3,45 @@
 
 <head>
     <title>Balls</title>
-    <style>
-        #can{
-            width: 100%;
-            height:100%;
-        }
-    </style>
+    <link rel="shortcut icon" href="#">
 </head>
 
 <body>
-    <canvas id="can"></canvas>
+    <canvas style="border: 2px solid;" width="500" height="500" id="canvas"></canvas>
     <script>
-        const canvas = document.getElementById("can");
+        const canvas = document.getElementById("canvas");
         const ctx = canvas.getContext("2d");
-        const ballRadius = 10;
-        let x = canvas.width / 2;
-        let y = canvas.height - 30;
-        let dx = 2;
-        let dy = -2;
- 
+        let x = 20;
+        let y = 20;
+        let dx = 0.6;
+        let dy = -2.3;
 
-        function drawBall(x,y,c) {
+        function drawCircle(x, y, rad, colour, ctx) {
             ctx.beginPath();
-            ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
-            ctx.fillStyle = c;
+            ctx.arc(x, y, rad, 0, Math.PI * 2);
+            ctx.fillStyle = colour;
             ctx.fill();
             ctx.closePath();
         }
 
         function draw() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            drawBall(x,y,"#0000");
-            
+            drawCircle(x, y, 20, "#F00", ctx);
 
-            if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
-                dx = -dx;
+            if (x + dx > canvas.width - 20 || x + dx < 20) {
+                dx = -dx 
             }
-            if (y + dy > canvas.height - ballRadius || y + dy < ballRadius) {
-                dy = -dy;
+            if (y + dy > canvas.height - 20 || y + dy < 20) {
+                dy = -dy ;
             }
 
-            x += dx;
-            y += dy;
+            x += dx
+            y += dy
         }
 
-        setInterval(draw, 10);
+        setInterval(draw, 1);
     </script>
-    
+
 </body>
 
 </html>

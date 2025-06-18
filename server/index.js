@@ -32,6 +32,9 @@ function login(body) {
 
 }
 
+app.use('/recources', express.static(path.join(__dirname, '/../public/recources')));
+
+
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/../public/boring.html'));
 });
