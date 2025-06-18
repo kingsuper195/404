@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Secret Website</title>
+    <link rel="stylesheet" href="/bootstrap">
+    <link rel="shortcut icon" href="#">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <h1>
+        Welcome to the Secret website, <span id="user"></span>!
+    </h1>
+    <p>Here you will use your one-time key to access your login ONCE!! You may only use your key to login one time, before you login again. It expires during login, and what you see in the URL bar is simply a used in the past. It no longer works.</p>
+    <script>
+        let urlParams = new URLSearchParams(document.location.search);
+        const params = {
+            key: urlParams.get("key"),
+        };
+        const options = {
+            method: 'POST',
+            body: JSON.stringify(params),
+            headers: { 'Content-Type': 'application/json' }
+        };
+        fetch('/api/users', options)
+            .then(response => response.json())
+            .then(response => {
+                $("#user").text(response.user.uname);
+            });
+
+        
+    </script>
+</body>
+
+</html>

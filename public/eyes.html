@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Eyes</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            display: grid;
+            height: 100%;
+            place-items: center;
+
+        }
+
+        body {
+            overflow: hidden;
+        }
+
+        .wrapper {
+            position: relative;
+        }
+
+        .btn-button {
+            background: #fff;
+            border: 3px solid #000;
+            border-radius: 10rem;
+            padding: 2rem;
+            position: relative;
+            z-index: 100;
+        }
+
+        .btn-lid {
+            border-radius: 10px;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 101;
+        }
+
+        .btn-pupil {
+            background: #000;
+            border: 0.8rem solid rgb(156, 207, 255);
+            border-radius: 10rem;
+            padding: 0.7rem;
+            transition: all 200ms ease-out;
+        }
+
+        .btn-sensor {
+            clip-path: polygon(0 0, 100% 0, 50% 100%, 0 0);
+            height: 130dvmax;
+            overflow: hidden;
+            position: absolute;
+            left: calc(50% - 130dvmax / 2);
+            top: calc(50% - 130dvmax / 2);
+            transform: rotate(calc(var(--a) * 1deg)) translateY(calc(130dvmax * -50 / 100));
+            width: 130dvmax;
+            z-index: 99;
+        }
+
+        .sensor-n:hover~.btn-button .btn-pupil {
+            transform: translateX(0) translateY(calc(-3 * 20%));
+        }
+
+        .sensor-ne:hover~.btn-button .btn-pupil {
+            transform: translateX(calc(2 * 20%)) translateY(calc(-2 * 20%));
+        }
+
+        .sensor-e:hover~.btn-button .btn-pupil {
+            transform: translateX(calc(3 * 20%)) translateY(0);
+        }
+
+        .sensor-se:hover~.btn-button .btn-pupil {
+            transform: translateX(calc(2 * 20%)) translateY(calc(2 * 20%));
+        }
+
+        .sensor-s:hover~.btn-button .btn-pupil {
+            transform: translateX(0) translateY(calc(3 * 20%));
+        }
+
+        .sensor-sw:hover~.btn-button .btn-pupil {
+            transform: translateX(calc(-2 * 20%)) translateY(calc(2 * 20%));
+        }
+
+        .sensor-w:hover~.btn-button .btn-pupil {
+            transform: translateX(calc(-3 * 20%)) translateY(0);
+        }
+
+        .sensor-nw:hover~.btn-button .btn-pupil {
+            transform: translateX(calc(-2 * 20%)) translateY(calc(-2 * 20%));
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div style="--a:0;" class="btn-sensor sensor-n"></div>
+        <div style="--a:45;" class="btn-sensor sensor-ne"></div>
+        <div style="--a:90;" class="btn-sensor sensor-e"></div>
+        <div style="--a:135;" class="btn-sensor sensor-se"></div>
+        <div style="--a:180;" class="btn-sensor sensor-s"></div>
+        <div style="--a:225;" class="btn-sensor sensor-sw"></div>
+        <div style="--a:270;" class="btn-sensor sensor-w"></div>
+        <div style="--a:315;" class="btn-sensor sensor-nw"></div>
+        <button class="btn-button">
+            <div class="btn-lid"></div>
+            <div class="btn-pupil"></div>
+        </button>
+        <button class="btn-button">
+            <div class="btn-lid"></div>
+            <div class="btn-pupil"></div>
+        </button>
+    </div>
+</body>
+
+</html>

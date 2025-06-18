@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>404 Not Found</title>
+    <link rel="shortcut icon" href="#">
+    
+</head>
+
+<body>
+    <div style="text-align: center;">
+        <h1>404 <span onclick="clickUrl();">N</span>ot Found</h1>
+    </div>
+    <hr onclick="clickUrl2()">
+    <div style="text-align: center;">nginx 2.378.12, <a href="https://github.com/kingsuper195/404">Silly Edition</a></div>
+
+    <script>
+        let keys = [];
+        document.addEventListener('keydown', async (event) => {
+            keys.push(event.key);
+            const res = await fetch('/api/keys/secret/checkt', { body: JSON.stringify({ keys: keys.join('') }), headers: { 'Content-Type': 'application/json' }, method: 'post' });
+            const data = await res.json();
+            if (data && data.path) {
+                location.href = data.path;
+            }
+        });
+        function clickUrl() {
+            location.href = '/eyes'
+        }
+        function clickUrl2() {
+            location.href = '/ball'
+        }
+    </script>
+</body>
+
+</html>
