@@ -68,11 +68,15 @@ app.post("/", urlencodedParser, (req, res) => {
 });
 
 app.get("/eyes", (req, res) => {
-    res.sendFile(path.join(__dirname,"/../public/eyes.html"));
+    res.sendFile(path.join(__dirname, "/../public/eyes.html"));
 });
 
-app.get("/ball", (req,res)=>{
-    res.sendFile(path.join(__dirname,"/../public/ball.html"));
+app.get("/ball", (req, res) => {
+    res.sendFile(path.join(__dirname, "/../public/ball.html"));
+});
+
+app.get("/input", (req,res)=>{
+    res.sendFile(path.join(__dirname, "/../public/input.html"));
 });
 
 app.post("/api/users", jsonParser, (req, res) => {
@@ -88,7 +92,8 @@ app.post('/api/keys/secret/checkt', jsonParser, (req, res) => {
     if (req.body?.keys) {
         if (typeof req.body.keys == 'string' && req.body.keys.endsWith('login')) {
             res.send(JSON.stringify({ path: '/api/key/secret/users' }));
-        } else {
+        } else if (typeof req.body.keys == 'string' && req.body.keys.endsWith('b')) {
+            res.send(JSON.stringify({ path: '/input' }));
         }
     }
 });
