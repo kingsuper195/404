@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>BUTTON!</title>
+    <style>
+        #cllick {
+            padding: 1px 6px;
+            border: 1px outset buttonborder;
+            border-radius: 3px;
+            color: buttontext;
+            background-color: buttonface;
+            text-decoration: none;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="/api/key/secret/users" id="cllick">CLICK ME!</a>
+    <script>
+        const noButton = document.querySelector('#cllick');
+
+        const moveNoButton = () => {
+            let x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+            let y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+
+            noButton.style.position = 'absolute';
+            noButton.style.left = `${x}px`;
+            noButton.style.top = `${y}px`;
+        }
+
+        noButton.addEventListener('mouseover', moveNoButton);
+    </script>
+</body>
+
+</html>

@@ -52,6 +52,10 @@ app.get('/home', (req, res) => {
     }
 });
 
+app.get('/button',(req,res)=>{
+    res.sendFile(path.join(__dirname, '/../public/button.html'));
+});
+
 app.get('/bootstrap', (req, res) => {
     res.sendFile(path.join(__dirname, '/../public/bootstrap.min.css'));
 });

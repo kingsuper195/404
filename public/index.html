@@ -3,7 +3,14 @@
 
 <head>
     <title>Secret Website</title>
-    <link rel="stylesheet" href="/bootstrap">
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+        .house{
+            display:none;
+        }
+    </style>
     <link rel="shortcut icon" href="#">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
@@ -13,12 +20,18 @@
     <h1>
         Welcome to the Secret website, <span id="user"></span>!
     </h1>
-    <p>Here you will use your one-time key to access your login ONCE!! You may only use your key to login one time, before you login again. It expires during login, and what you see in the URL bar is simply a thing used in the past. It no longer works.</p>
+    <p>Here you will use your one-time key to access your login ONCE!! You may only use your key to login one time,
+        before you login again. It expires during login, and what you see in the URL bar is simply a thing used in the
+        past. It no longer works.</p>
     <p>You are now able to acess ALL secrets and suprises FOR FREE, for no work at all.</p>
     <a href="/input">Input</a><br>
     <a href="/eyes">Eyes</a><br>
-    <a href="/ball">Ball</a>
-    
+    <a href="/ball">Ball</a><br>
+
+    <button onclick="house()">Click to Show the House</button>
+
+    <img src="/recources/house.svg" alt="The House" class="house"><br>
+    <p class="house">You are free. Feel satisfied.</p>
 
     <script>
         let urlParams = new URLSearchParams(document.location.search);
@@ -36,7 +49,11 @@
                 $("#user").text(response.user.uname);
             });
 
-        
+        function house() {
+            document.getElementsByClassName("house").style.display="block";
+        }
+
+
     </script>
 </body>
 
