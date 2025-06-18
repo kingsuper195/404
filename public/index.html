@@ -6,36 +6,54 @@
     <style>
         body {
             font-family: sans-serif;
+            text-align: center;
+            background-image: url('/recources/bg.svg');
+            background-repeat: no-repeat;
+            background-size: cover;
         }
-        #house{
-            display:none;
+
+        #house {
+            display: none;
+            margin-left: auto;
+            margin-right: auto;
         }
-        #text{
-            display:none;
+
+        #text {
+            display: none;
+        }
+
+        button {
+            padding: 3px;
+        }
+
+        #main {
+            background-color: white;
+            padding-bottom: 10px;
         }
     </style>
     <link rel="shortcut icon" href="#">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <h1>
-        Welcome to the Secret website, <span id="user"></span>!
-    </h1>
-    <p>Here you will use your one-time key to access your login ONCE!! You may only use your key to login one time,
-        before you login again. It expires during login, and what you see in the URL bar is simply a thing used in the
-        past. It no longer works.</p>
-    <p>You are now able to acess ALL secrets and suprises FOR FREE, for no work at all.</p>
-    <a href="/input">Input</a><br>
-    <a href="/eyes">Eyes</a><br>
-    <a href="/ball">Ball</a><br>
+    <div id="main">
+        <h1>
+            Welcome to the Secret website, <span id="user"></span>!
+        </h1>
+        <p>Here you will use your one-time key to access your login ONCE!! You may only use your key to login one time,
+            before you login again. It expires during login, and what you see in the URL bar is simply a thing used in
+            the
+            past. It no longer works.</p>
+        <p>You are now able to acess ALL secrets and suprises FOR FREE, for no work at all.</p>
+        <a href="/input">Input</a><br>
+        <a href="/eyes">Eyes</a><br>
+        <a href="/ball">Ball</a><br>
+        <a href="/button">The even more Annoying button</a><br><br>
 
-    <button onclick="house()">Click to Show the House</button>
+        <button id="houseButton" onclick="house()">Click to Show the House</button>
 
-    <img src="/recources/house.svg" alt="The House" id="house"><br>
-    <p id="text">You are free. Feel satisfied.</p>
-
+        <img src="/recources/house.svg" alt="The House" id="house"><br>
+        <p id="text">You are free. Feel satisfied.</p>
+    </div>
     <script>
         let urlParams = new URLSearchParams(document.location.search);
         const params = {
@@ -49,12 +67,13 @@
         fetch('/api/users', options)
             .then(response => response.json())
             .then(response => {
-                $("#user").text(response.user.uname);
+                document.getElementById("user").textContent = response.user.uname;
             });
 
         function house() {
-            document.getElementById("house").style.display="block";
-            document.getElementById("text").style.display="block";
+            document.getElementById("houseButton").remove();
+            document.getElementById("house").style.display = "block";
+            document.getElementById("text").style.display = "block";
         }
 
 

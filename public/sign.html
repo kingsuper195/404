@@ -4,17 +4,36 @@
 <head>
     <meta charset="UTF-8" />
     <title>Sign in!</title>
-    <link rel="stylesheet" href="/bootstrap" />
-    <link rel="shortcut icon" href="#">
+    <style>
+        body {
+            font-family: sans-serif;
+            background-image: url('/recources/bg.svg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        div {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+
+        }
+
+        form {
+            padding: 10px;
+            background-color: rgb(212, 212, 212);
+            border: 2px solid black;
+
+            border-radius: 10px;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container d-flex 
-         align-items-center 
-         justify-content-center 
-         min-vh-100 ">
-        
-        <form action="/" method="post" class="card bg-light mb-3" style="padding:20px;">
+    <div>
+        <form action="/" method="post" style="padding:20px;">
             <h1>Please Sign In To Use This Service:</h1>
             <p>
                 <label for="user">User:</label>
@@ -22,7 +41,7 @@
                 <label for="key">Key:</label>
                 <input type="text" id="key" name="key" />
             </p>
-            <input type="submit" class="btn btn-primary" value="Sign In"/>
+            <input type="submit" value="Sign In" />
         </form>
     </div>
 </body>
