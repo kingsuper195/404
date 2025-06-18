@@ -7,7 +7,10 @@
         body {
             font-family: sans-serif;
         }
-        .house{
+        #house{
+            display:none;
+        }
+        #text{
             display:none;
         }
     </style>
@@ -30,8 +33,8 @@
 
     <button onclick="house()">Click to Show the House</button>
 
-    <img src="/recources/house.svg" alt="The House" class="house"><br>
-    <p class="house">You are free. Feel satisfied.</p>
+    <img src="/recources/house.svg" alt="The House" id="house"><br>
+    <p id="text">You are free. Feel satisfied.</p>
 
     <script>
         let urlParams = new URLSearchParams(document.location.search);
@@ -50,7 +53,8 @@
             });
 
         function house() {
-            document.getElementsByClassName("house").style.display="block";
+            document.getElementById("house").style.display="block";
+            document.getElementById("text").style.display="block";
         }
 
 
