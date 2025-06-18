@@ -75,7 +75,7 @@ app.get("/ball", (req, res) => {
     res.sendFile(path.join(__dirname, "/../public/ball.html"));
 });
 
-app.get("/input", (req,res)=>{
+app.get("/input", (req, res) => {
     res.sendFile(path.join(__dirname, "/../public/input.html"));
 });
 
