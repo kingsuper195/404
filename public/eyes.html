@@ -4,20 +4,60 @@
 <head>
     <title>Eyes</title>
     <link rel="shortcut icon" href="#">
+    <style>
+        /* div {
+            text-align: center;
+            top: 50%;
+            transform: translateY(50%);
+        } */
+    </style>
 </head>
 
 <body>
-    <canvas id="canvas"></canvas>
+    <div>
+        <canvas id="canvas"></canvas>
+    </div>
     <script>
-        let x = 100;
-        let y = 100;
+        //some code from https://stackoverflow.com/a/65474254
         const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+
+        let eye = {
+            radius: 50,
+            iris: 20,
+            // limits of movement
+            limMin: 0.17,
+            limMax: 0.83,
+        };
+
+        const lookat = { x: 150, y: 75 };
         function draw() {
             if (canvas.getContext) {
-                const ctx = canvas.getContext("2d");
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
+                let { x, y } = lookat;
 
-                
+                // normalise lookat range from 0 to 1 across and down canvas
+                x /= canvas.width;
+                y /= canvas.height;
+
+                // limit eye movement to -0.1 to 1.1  or what ever you prefer
+                x = x < eye.limMin ? eye.limMin : x > eye.limMax ? eye.limMax : x;
+                y = y < eye.limMin ? eye.limMin : y > eye.limMax ? eye.limMax : y;
+
+                // move lookat so that 0.5 is center
+                x -= 0.5;
+                y -= 0.5;
+
+                // get range of movement of iris
+                const range = (eye.radius - eye.iris) * 2;
+
+                // scale the lookats to the range of movement
+                x *= range;
+                y *= range;
+
+                x += 100
+                y += 100
+
                 drawCircle(100, 100, 50, "#000", ctx);
                 drawCircle(100, 100, 48, "#FFF", ctx);
                 drawCircle(x, y, 20, "#90D5FF", ctx);
@@ -25,8 +65,8 @@
 
                 drawCircle(200, 100, 50, "#000", ctx);
                 drawCircle(200, 100, 48, "#FFF", ctx);
-                drawCircle(x+100, y, 20, "#90D5FF", ctx);
-                drawCircle(x+100, y, 10, "#000", ctx);
+                drawCircle(x + 100, y, 20, "#90D5FF", ctx);
+                drawCircle(x + 100, y, 10, "#000", ctx);
             }
         }
 
@@ -39,15 +79,10 @@
         }
 
         function mouseMoveHandler(e) {
-            const relativeX = e.clientX //- canvas.offsetLeft;
-            const relativeY = e.clientY //- canvas.offsetTop;
-            if (relativeX > 50+30 && relativeX < 150-30) {
-                x = relativeX
-            }
-
-            if (relativeY > 50+30 && relativeY < 150-30) {
-                y = relativeY
-            }
+            const bounds = canvas.getBoundingClientRect();
+            lookat.x = e.pageX - bounds.left;
+            lookat.y = e.pageY - bounds.top;
+            draw();
         }
 
         document.addEventListener("mousemove", mouseMoveHandler, false);

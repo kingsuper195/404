@@ -4,10 +4,19 @@
 <head>
     <title>Balls</title>
     <link rel="shortcut icon" href="#">
+    <style>
+        div {
+            text-align: center;
+            top: 50%;
+            transform: translateY(50%);
+        }
+    </style>
 </head>
 
 <body>
-    <canvas style="border: 2px solid;" width="500" height="500" id="canvas"></canvas>
+    <div>
+        <canvas style="border: 2px solid;" width="500" height="500" id="canvas"></canvas>
+    </div>
     <script>
         const canvas = document.getElementById("canvas");
         const ctx = canvas.getContext("2d");
@@ -29,10 +38,10 @@
             drawCircle(x, y, 20, "#F00", ctx);
 
             if (x + dx > canvas.width - 20 || x + dx < 20) {
-                dx = -dx 
+                dx = -dx
             }
             if (y + dy > canvas.height - 20 || y + dy < 20) {
-                dy = -dy ;
+                dy = -dy;
             }
 
             x += dx
