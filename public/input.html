@@ -1,15 +1,76 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Input</title>
-        <link rel="stylesheet" href="/bootstrap" />
-        <link rel="shortcut icon" href="#">
-    </head>
-    <body>
-        <input type="text" class="form-control" aria-describedby="basic-addon1">
-        <p style="text-align: center;">
-            User: "user"<br>
-            Passcode: "1234"
-        </p>
-    </body>
+
+<head>
+    <title>Input</title>
+    <link rel="shortcut icon" href="#">
+    <style>
+        input {
+            width: 100%;
+            height: 2em;
+            background-color: rgb(221, 221, 221);
+            border: 2px solid;
+            font-size: xx-large;
+        }
+
+        p {
+            font-size: xx-large;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+            font-family: sans-serif;
+        }
+
+        button {
+            border: none;
+            width: 100%;
+            background-color: white;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" placeholder="This input box does nothing. Nothing at all. It's just here. Just keep clicking.">
+    <button id="subButton" onclick="clicks+=1">Submit</button>
+    <p style="text-align: center;">
+        User: "user"<br>
+        Passcode: "1234"
+    </p>
+    <span id="youclicked"></span><a href="/api/key/secret/users" id="here"></a>
+    <script>
+
+        let clicks = 0;
+        let oldClicks = 0;
+        function clickClick() {
+            if (clicks != oldClicks) {
+                if (clicks ==1) {
+                    alert('Still does nothing. Good job for finding the submit button though...');
+                } else if (clicks == 10) {
+                    alert('Fine. If you REALLY REALLY want the button to do something here you go.');
+                    document.getElementById("youclicked").textContent = "I mean really, clicking a button a HUGE amount of times dosen't make anything happen. You clicked " + clicks.toString() + " times.";
+                } else if (clicks > 10 && clicks < 100) {
+                    document.getElementById("youclicked").textContent = "I mean really, clicking a button a HUGE amount of times dosen't make anything happen. You clicked " + clicks.toString() + " times.";
+                } else if (clicks > 99 && clicks < 150) {
+                    document.getElementById("youclicked").textContent = "WOW, you are really clicking that button now. You clicked " + clicks.toString() + " times.";
+                } else if (clicks == 150) {
+                    document.getElementById("youclicked").textContent = "Fine. WHAT DO YOU WANT? A link? Here is a link. But I am NOT giving you another click. You clicked " + clicks.toString() + " times. Leave a poor button alone! ";
+                    document.getElementById("here").textContent = "A link";
+                    document.getElementById("subButton").disabled=true;
+                } else if (clicks > 150) {
+                    document.getElementById("youclicked").textContent = "Wait What? LOOK. Just because YOU are setting the clicks variable in the console, DOES not mean you are still clicking. Go back to 150 immediately there is NOTHING after this. ";
+                } else {
+                    alert('Still does nothing.')
+                }
+                oldClicks=clicks
+            }
+        }
+        setInterval(clickClick, 40)
+    </script>
+
+</body>
+
 </html>
