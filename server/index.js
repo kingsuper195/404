@@ -52,7 +52,7 @@ app.get('/home', (req, res) => {
     }
 });
 
-app.get('/button',(req,res)=>{
+app.get('/button', (req, res) => {
     res.sendFile(path.join(__dirname, '/../public/button.html'));
 });
 

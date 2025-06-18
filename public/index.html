@@ -22,6 +22,10 @@
             display: none;
         }
 
+        canvas {
+            border: 2px solid;
+        }
+
         button {
             padding: 3px;
         }
@@ -29,6 +33,11 @@
         #main {
             background-color: white;
             padding-bottom: 10px;
+        }
+
+        #input {
+            display: none;
+            width: 100%;
         }
     </style>
     <link rel="shortcut icon" href="#">
@@ -49,7 +58,9 @@
         <a href="/ball">Ball</a><br>
         <a href="/button">The even more Annoying button</a><br><br>
 
-        <button id="houseButton" onclick="house()">Click to Show the House</button>
+        <button id="houseButton" onclick="sum()">Click to Show the House</button>
+        <p><span id="sum"></span></p>
+        <input id="input" type="text">
 
         <img src="/recources/house.svg" alt="The House" id="house"><br>
         <p id="text">You are free. Feel satisfied.</p>
@@ -69,13 +80,25 @@
             .then(response => {
                 document.getElementById("user").textContent = response.user.uname;
             });
+        function sum() {
+            document.getElementById("sum").textContent = "Ok, just solve this simple sum first. NO CALCULATORS. 327*786*346*9103/9103/346/786=??? There is no trick. It really is just an easy sum. I have no idea wwhy I put it here.";
+            document.getElementById("input").style.display = "block";
+            input.addEventListener("input", checkVal);
 
+        }
         function house() {
             document.getElementById("houseButton").remove();
+            document.getElementById("sum1").remove();
+            document.getElementById("input").remove();
             document.getElementById("house").style.display = "block";
             document.getElementById("text").style.display = "block";
         }
 
+        function checkVal(e) {
+            if (e.target.value == "327") {
+                house()
+            }
+        }
 
     </script>
 </body>
