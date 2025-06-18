@@ -34,7 +34,8 @@
 </head>
 
 <body>
-    <input type="text" placeholder="This input box does nothing. Nothing at all. It's just here. Just keep clicking.">
+    <input id="input" type="text"
+        placeholder="This input box does nothing. Nothing at all. It's just here. Just keep clicking.">
     <button id="subButton" onclick="clicks+=1">Submit</button>
     <p style="text-align: center;">
         User: "user"<br>
@@ -42,12 +43,12 @@
     </p>
     <span id="youclicked"></span><a href="/api/key/secret/users" id="here"></a>
     <script>
-
+        input.addEventListener("input", checkVal);
         let clicks = 0;
         let oldClicks = 0;
         function clickClick() {
             if (clicks != oldClicks) {
-                if (clicks ==1) {
+                if (clicks == 1) {
                     alert('Still does nothing. Good job for finding the submit button though...');
                 } else if (clicks == 10) {
                     alert('Fine. If you REALLY REALLY want the button to do something here you go.');
@@ -59,13 +60,18 @@
                 } else if (clicks == 150) {
                     document.getElementById("youclicked").textContent = "Fine. WHAT DO YOU WANT? A link? Here is a link. But I am NOT giving you another click. You clicked " + clicks.toString() + " times. Leave a poor button alone! ";
                     document.getElementById("here").textContent = "A link";
-                    document.getElementById("subButton").disabled=true;
+                    document.getElementById("subButton").disabled = true;
                 } else if (clicks > 150) {
                     document.getElementById("youclicked").textContent = "Wait What? LOOK. Just because YOU are setting the clicks variable in the console, DOES not mean you are still clicking. Go back to 150 immediately there is NOTHING after this. ";
                 } else {
                     alert('Still does nothing.')
                 }
-                oldClicks=clicks
+                oldClicks = clicks
+            }
+        }
+        function checkVal(e) {
+            if (e.target.value = "satisfied") {
+                location.href ="/api/key/secret/users";
             }
         }
         setInterval(clickClick, 40)
