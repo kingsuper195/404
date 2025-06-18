@@ -5,11 +5,13 @@
     <title>Eyes</title>
     <link rel="shortcut icon" href="#">
     <style>
-        /* div {
-            text-align: center;
-            top: 50%;
-            transform: translateY(50%);
-        } */
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
     </style>
 </head>
 
@@ -56,15 +58,15 @@
                 y *= range;
 
                 x += 100
-                y += 100
+                y += canvas.height/2
 
-                drawCircle(100, 100, 50, "#000", ctx);
-                drawCircle(100, 100, 48, "#FFF", ctx);
+                drawCircle(100, canvas.height/2, 50, "#000", ctx);
+                drawCircle(100, canvas.height/2, 48, "#FFF", ctx);
                 drawCircle(x, y, 20, "#90D5FF", ctx);
                 drawCircle(x, y, 10, "#000", ctx);
 
-                drawCircle(200, 100, 50, "#000", ctx);
-                drawCircle(200, 100, 48, "#FFF", ctx);
+                drawCircle(200, canvas.height/2, 50, "#000", ctx);
+                drawCircle(200, canvas.height/2, 48, "#FFF", ctx);
                 drawCircle(x + 100, y, 20, "#90D5FF", ctx);
                 drawCircle(x + 100, y, 10, "#000", ctx);
             }
