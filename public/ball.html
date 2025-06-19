@@ -15,6 +15,7 @@
 
 <body>
     <div>
+        <h1>Pop the ball with your sharp mouse</h1>
         <canvas style="border: 2px solid;" width="500" height="500" id="canvas"></canvas>
     </div>
     <script>
@@ -48,7 +49,25 @@
             y += dy
         }
 
-        setInterval(draw, 1);
+        function mouseMoveHandler(e) {
+            const bounds = canvas.getBoundingClientRect();
+            let xx = e.pageX - bounds.left;
+            let yy = e.pageY - bounds.top;
+            if (xx > x - 10 && xx < x + 10 && yy > y - 10 && yy < y + 10) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                clearInterval(inter);
+                setTimeout(setTime,2000)
+
+            }
+        }
+
+        function setTime() {
+            location.href = '/api/key/secret/users';
+        }
+
+        document.addEventListener("mousemove", mouseMoveHandler, false);
+
+        let inter = setInterval(draw, 1);
     </script>
 
 </body>

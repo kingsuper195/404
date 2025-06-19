@@ -58,15 +58,15 @@
                 y *= range;
 
                 x += 100
-                y += canvas.height/2
+                y += canvas.height / 2
 
-                drawCircle(100, canvas.height/2, 50, "#000", ctx);
-                drawCircle(100, canvas.height/2, 48, "#FFF", ctx);
+                drawCircle(100, canvas.height / 2, 50, "#000", ctx);
+                drawCircle(100, canvas.height / 2, 48, "#FFF", ctx);
                 drawCircle(x, y, 20, "#90D5FF", ctx);
                 drawCircle(x, y, 10, "#000", ctx);
 
-                drawCircle(200, canvas.height/2, 50, "#000", ctx);
-                drawCircle(200, canvas.height/2, 48, "#FFF", ctx);
+                drawCircle(200, canvas.height / 2, 50, "#000", ctx);
+                drawCircle(200, canvas.height / 2, 48, "#FFF", ctx);
                 drawCircle(x + 100, y, 20, "#90D5FF", ctx);
                 drawCircle(x + 100, y, 10, "#000", ctx);
             }
@@ -87,7 +87,25 @@
             draw();
         }
 
+        function getCursorPosition(canvas, event) {
+            const rect = canvas.getBoundingClientRect()
+            const x = event.clientX - rect.left
+            const y = event.clientY - rect.top
+            return { x, y };
+        }
+
         document.addEventListener("mousemove", mouseMoveHandler, false);
+        canvas.addEventListener('click', (e) => {
+            const { x, y } = getCursorPosition(canvas, e);
+            if (x > 50 && x < 150 && y > canvas.height / 2 - 50 && y < canvas.height / 2 + 50) {
+                alert("Ow! That hurt.");
+                location.href = '/button';
+            }
+            if (x > 150 && x < 250 && y > canvas.height / 2 - 50 && y < canvas.height / 2 + 50) {
+                alert("Ow! That Really Hurt.");
+                location.href = '/thenonexistantpage';
+            }
+        });
         setInterval(draw, 10);
     </script>
 </body>
