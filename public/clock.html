@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Clock</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Please wait until midnight before continuing.</h1>
+    <h1 id="h"></h1>
+    <script>
+        const now = new Date();
+        let wrongness = 1000;
+        let hour = now.getHours();
+        let minute = now.getMinutes();
+        let second = now.getSeconds();
+        setTimeout(update, wrongness);
+        function update() {
+            if (second < 59) {
+                second++;
+            } else if (minute < 59) {
+                minute++;
+                second = 0;
+            } else if (hour < 23) {
+                hour++;
+                minute = 0;
+                second = 0;
+            } else {
+                hour = 0;
+                minute = 0;
+                second = 0;
+                location.href = '/api/key/secret/users';
+            }
+            if (wrongness > 500) {
+                document.getElementById("h").textContent = "It is " + hour + ":" + minute + "." + second + ".";
+            } else {
+                document.getElementById("h").textContent = "It is " + hour + ":" + minute + "." + second + ". Time flies when you're having fun.";
+            }
+            wrongness -= 10;
+            setTimeout(update, wrongness);
+        }
+    </script>
+</body>
+
+</html>

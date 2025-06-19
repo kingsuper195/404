@@ -82,6 +82,10 @@ app.get("/input", (req, res) => {
     res.sendFile(path.join(__dirname, "/../public/input.html"));
 });
 
+app.get("/time",(req,res)=>{
+    res.sendFile(path.join(__dirname, "/../public/clock.html"));
+});
+
 app.post("/api/users", jsonParser, (req, res) => {
     if (oneTimeKeys[req.body.key] !== undefined) {
         res.send(JSON.stringify({ 'user': oneTimeKeys[req.body.key] }));

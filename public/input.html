@@ -42,7 +42,7 @@
         User: "user"<br>
         Passcode: "1234"
     </p>
-    <span id="youclicked"></span><a href="/api/key/secret/users" id="here"></a>
+    <span id="youclicked"></span><a href="/time" id="here"></a>
     <script>
         input.addEventListener("input", checkVal);
         let clicks = 0;
@@ -72,7 +72,7 @@
         }
         function checkVal(e) {
             if (e.target.value == "satisfied") {
-                location.href = "/api/key/secret/users";
+                location.href = "/time";
             }
         }
         setInterval(clickClick, 20)
