@@ -25,11 +25,12 @@
         }
 
         button {
-            border: none;
+            border: 1px solid black;
             width: 100%;
             background-color: white;
-            color: white;
+            color: rgb(0, 0, 0);
             cursor: pointer;
+            height:3em;
         }
     </style>
 </head>
@@ -65,9 +66,9 @@
                 } else if (clicks > 150) {
                     document.getElementById("youclicked").textContent = "Wait What? LOOK. Just because YOU are setting the clicks variable in the console, DOES not mean you are still clicking. Go back to 150 immediately there is NOTHING after this. ";
                 } else {
-                    alert('Still does nothing.')
+                    alert('Still does nothing.');
                 }
-                oldClicks = clicks
+                oldClicks = clicks;
             }
         }
         function checkVal(e) {
@@ -75,7 +76,7 @@
                 location.href = "/time";
             }
         }
-        setInterval(clickClick, 20)
+        setInterval(clickClick, 20);
     </script>
 
 </body>

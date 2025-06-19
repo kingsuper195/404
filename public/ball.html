@@ -40,14 +40,14 @@
             drawCircle(x, y, 20, "#F00", ctx);
 
             if (x + dx > canvas.width - 20 || x + dx < 20) {
-                dx = -dx
+                dx = -dx;
             }
             if (y + dy > canvas.height - 20 || y + dy < 20) {
                 dy = -dy;
             }
 
-            x += dx
-            y += dy
+            x += dx;
+            y += dy;
         }
 
         function mouseMoveHandler(e) {
@@ -57,7 +57,7 @@
             if (xx > x - 10 && xx < x + 10 && yy > y - 10 && yy < y + 10) {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 clearInterval(inter);
-                setTimeout(setTime,2000)
+                setTimeout(setTime,2000);
 
             }
         }
