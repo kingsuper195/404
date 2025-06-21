@@ -42,7 +42,12 @@
             } else {
                 document.getElementById("h").textContent = "It is " + hour + ":" + minute + "." + second + ". Time flies when you're having fun.";
             }
-            wrongness -= 10;
+            if (wrongness > 10) {
+                wrongness -= 30;
+            } else if (hour < 22) {
+                wrongness = 1;
+                hour++
+            }
             setTimeout(update, wrongness);
         }
     </script>
